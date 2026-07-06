@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Running on a 2013 phone: the native low-end tech stack behind ProFocus · Trần Trung Hiếu</title><meta name="description" content="ProFocus turns a spare phone into a desk clock, focus timer, and WiFi photo frame. Supporting that means running on Android 4.3 and iOS 12, with no Firebase and no Play Services. Here is how I built it."><link rel="icon" href="/blog/favicon.png" type="image/png"><meta name="theme-color" content="#0b0c0f"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><meta name="author" content="Trần Trung Hiếu"><link rel="canonical" href="https://trunghieuvn.github.io/blog/native-low-end-devices/"><link rel="alternate" hreflang="en" href="https://trunghieuvn.github.io/blog/native-low-end-devices/"><link rel="alternate" hreflang="vi" href="https://trunghieuvn.github.io/blog/vi/native-low-end-devices/"><link rel="alternate" hreflang="x-default" href="https://trunghieuvn.github.io/blog/native-low-end-devices/"><link rel="alternate" type="application/rss+xml" title="Trần Trung Hiếu — blog" href="/blog/rss.xml"><meta property="og:site_name" content="Trần Trung Hiếu"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="vi_VN"><meta property="og:title" content="Running on a 2013 phone: the native low-end tech stack behind ProFocus · Trần Trung Hiếu"><meta property="og:description" content="ProFocus turns a spare phone into a desk clock, focus timer, and WiFi photo frame. Supporting that means running on Android 4.3 and iOS 12, with no Firebase and no Play Services. Here is how I built it."><meta property="og:type" content="article"><meta property="og:url" content="https://trunghieuvn.github.io/blog/native-low-end-devices/"><meta property="og:image" content="https://fighttech.vn/assets/img/profocus-shot.webp"><meta property="og:image:alt" content="Running on a 2013 phone: the native low-end tech stack behind ProFocus · Trần Trung Hiếu"><meta property="article:published_time" content="2026-07-04T00:00:00.000Z"><meta property="article:modified_time" content="2026-07-04T00:00:00.000Z"><meta property="article:publisher" content="https://trunghieuvn.fighttech.vn/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Running on a 2013 phone: the native low-end tech stack behind ProFocus · Trần Trung Hiếu"><meta name="twitter:description" content="ProFocus turns a spare phone into a desk clock, focus timer, and WiFi photo frame. Supporting that means running on Android 4.3 and iOS 12, with no Firebase and no Play Services. Here is how I built it."><meta name="twitter:image" content="https://fighttech.vn/assets/img/profocus-shot.webp"><script>
+    (function () {
+      try { var th = localStorage.getItem('theme'); if (th === 'light' || th === 'dark') document.documentElement.setAttribute('data-theme', th); } catch (e) {}
+    })();
+  </script><!-- Google Analytics (GA4) with Consent Mode; consent shared with the landing --><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MBDSBG2P3"></script><script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    var _cc = 'denied';
+    try { if (localStorage.getItem('cookie-consent') === 'granted') _cc = 'granted'; } catch (e) {}
+    gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: _cc });
+    gtag('js', new Date());
+    gtag('config', 'G-9MBDSBG2P3');
+  </script><link rel="stylesheet" href="/blog/_astro/_slug_.CJPGv8a4.css"></head> <body> <header class="nav"> <div class="container-wide nav-inner"> <a class="brand" href="https://trunghieuvn.fighttech.vn/"> <span>Trần Trung Hiếu</span> </a> <nav aria-label="Main"> <ul class="nav-links"> <li><a href="/blog/" aria-current="page">Blog</a></li> <li><a href="https://trunghieuvn.fighttech.vn/#work">Work</a></li> <li><a href="https://trunghieuvn.fighttech.vn/#reach">Contact</a></li> </ul> </nav> <div class="nav-right"> <div class="lang" aria-label="Language"> <a href="/blog/native-low-end-devices/" lang="en" aria-current="true">EN</a> <a href="/blog/vi/native-low-end-devices/" lang="vi">VI</a> </div> <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">◐</button> <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">&#9776;</button> </div> </div> </header> <main>  <article> <div class="post-wrap"> <div class="post-grid"> <div class="post-main"> <div class="post-header"> <div class="meta"> <span class="chip"> <img src="https://fighttech.vn/assets/img/profocus-icon.webp" alt="" width="15" height="15"> ProFocus </span> <span>Jul 4, 2026</span> <span>· 4 min read</span> </div> <h1>Running on a 2013 phone: the native low-end tech stack behind ProFocus</h1> <p class="desc">ProFocus turns a spare phone into a desk clock, focus timer, and WiFi photo frame. Supporting that means running on Android 4.3 and iOS 12, with no Firebase and no Play Services. Here is how I built it.</p> <div class="post-tags"><span class="chip">Android</span><span class="chip">iOS</span><span class="chip">low-end devices</span><span class="chip">Java</span><span class="chip">Swift</span><span class="chip">native</span><span class="chip">GA4</span></div> </div> <div class="post-hero"> <img src="https://fighttech.vn/assets/img/profocus-shot.webp" alt="ProFocus screenshot"> </div> <div class="prose"><p>Most apps quietly drop support for old phones because it is easier. ProFocus, one of the apps I build and ship, does the opposite — supporting old phones <strong>is the product</strong>. It takes the phone in your drawer, the one two upgrades ago, and turns it into a desk clock, a focus timer, and a WiFi photo frame. That only works if the app actually installs and runs on hardware everyone else has given up on, natively, without the usual crutch of heavy cross-platform SDKs. This is the stack I use to keep that promise.</p>
+<h2 id="how-low-is-low">How low is low</h2>
+<ul>
+<li><strong>Android:</strong> <code>minSdk 18</code>, which is <strong>Android 4.3 Jelly Bean, from 2013</strong>. I test on a real 4.3 device, not just an emulator.</li>
+<li><strong>iOS:</strong> deployment target <strong>12.2</strong>, so a 2015 iPhone 6s is fully supported.</li>
+<li><strong>TV:</strong> an Android TV build and a tvOS 12 build, plus a Wear OS companion.</li>
+</ul>
+<p>Hitting those floors is not free. It shapes almost every technical decision below.</p>
+<h2 id="no-firebase-no-play-services-on-purpose">No Firebase, no Play Services, on purpose</h2>
+<p>The single biggest choice: ProFocus ships <strong>no Firebase SDK and no Google Play Services dependency</strong>. Those libraries are heavy, they are not guaranteed to run on ancient or de-Googled devices, and they pull in a lot of surface area for an app that just needs to show a clock.</p>
+<p>Instead, analytics go out as plain <strong>GA4 Measurement Protocol</strong> calls to my own server. That server, <code>tracking-server</code>, is a stateless <strong>Fastify (Node 20, TypeScript)</strong> proxy with no database: it takes a batch of events, resolves the API key to a project, and forwards them to the right GA4 stream. One small server is the only thing that ever talks to Google, so the app stays lean and works even where Play Services does not.</p>
+<h2 id="the-ios-12-obstacle-course">The iOS 12 obstacle course</h2>
+<p>Native Swift on iOS 12 is a minefield of things that compile fine and then crash on launch:</p>
+<ul>
+<li><strong>Swift Concurrency</strong> (<code>async</code>/<code>await</code>) crashes on iOS 12 because the concurrency runtime is not present. So the whole app is written against completion-handler APIs only; even the RevenueCat payment layer uses its callback API, never <code>async</code>.</li>
+<li><strong>SwiftProtobuf</strong> also crashes on iOS 12 launch. I share a <code>remote.proto</code> schema across platforms, but on iOS I do not use the generated protobuf types at all. Instead there is a hand-written <code>RemoteProtocol.swift</code> struct that mirrors the schema, and everything travels as plain JSON on the wire.</li>
+<li>A linker gap for <code>___chkstk_darwin</code> on-device is resolved by force-loading <code>libclang_rt.ios.a</code>.</li>
+</ul>
+<p>The Android side has its own version of this dance: features that genuinely need a newer API, like CameraX for QR scanning or Google Play Billing, are guarded behind <strong>runtime API-level checks</strong>. The app still declares <code>minSdk 18</code>, and those features simply light up on devices new enough to have them, while a 4.3 phone runs everything else natively — no polyfills, no bridge layer.</p>
+<h2 id="a-shared-sdk-not-per-app-glue">A shared SDK, not per-app glue</h2>
+<p>The payment and analytics pieces are not rebuilt for each app. They live in a config-driven <strong>shared SDK</strong> I reuse across my other products:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Module</th><th>Platform</th><th>Job</th></tr></thead><tbody><tr><td><code>fight-payment-*</code></td><td>iOS 12+, Android 18+</td><td>RevenueCat in-app purchase + paywall</td></tr><tr><td><code>fight-tracking-ga-*</code></td><td>iOS 12+, Android 18+</td><td>GA4 Measurement Protocol client</td></tr><tr><td><code>proto</code></td><td>both</td><td>shared remote-control schema (JSON on the wire)</td></tr></tbody></table>
+<p>Everything is injected at init: API keys, the entitlement id, the theme, analytics hooks. Nothing is hardcoded per product, and only public SDK keys are committed to the repo. Wiring a new app to payments and analytics is configuration, not code.</p>
+<h2 id="what-the-user-gets">What the user gets</h2>
+<p>All of that plumbing adds up to something simple from the outside: an app with no account and no third-party tracking that shares photos device-to-device over your local WiFi (the phone hosts a tiny HTTP server on port 8080), shows a Flip, Circle, or Analog clock, and runs a focus timer, on a phone that modern apps refuse to install on.</p>
+<p>The engineering lesson is that “support old devices” is not a checkbox you tick at the end. It is a constraint you carry from the first line: no async, no heavy SDKs, runtime guards everywhere, and your own small server standing in for the platform services you chose not to ship.</p>
+<p>You can try it from the <a href="https://apps.apple.com/app/id6785607785">App Store</a> — ideally on that spare phone in the drawer.</p></div> <div class="post-links"> <a class="btn btn-primary" href="https://apps.apple.com/app/id6785607785" target="_blank" rel="noopener">App Store ↗</a> </div> <div class="post-foot"><a href="/blog/">← All posts</a></div> </div> <aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li class><a href="#how-low-is-low" data-toc="how-low-is-low">How low is low</a></li><li class><a href="#no-firebase-no-play-services-on-purpose" data-toc="no-firebase-no-play-services-on-purpose">No Firebase, no Play Services, on purpose</a></li><li class><a href="#the-ios-12-obstacle-course" data-toc="the-ios-12-obstacle-course">The iOS 12 obstacle course</a></li><li class><a href="#a-shared-sdk-not-per-app-glue" data-toc="a-shared-sdk-not-per-app-glue">A shared SDK, not per-app glue</a></li><li class><a href="#what-the-user-gets" data-toc="what-the-user-gets">What the user gets</a></li></ul></aside><script>
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[data-toc]'));
+    if (!links.length) return;
+    var map = {};
+    var heads = [];
+    links.forEach(function (a) {
+      var id = a.getAttribute('data-toc');
+      map[id] = a;
+      var el = document.getElementById(id);
+      if (el) heads.push(el);
+    });
+    var setActive = function (id) {
+      links.forEach(function (a) { a.classList.remove('active'); });
+      if (map[id]) map[id].classList.add('active');
+    };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+      heads.forEach(function (h) { io.observe(h); });
+    }
+    // Smooth-scroll and immediate highlight on click
+    links.forEach(function (a) {
+      a.addEventListener('click', function () { setActive(a.getAttribute('data-toc')); });
+    });
+  })();
+</script> </div> </div> </article> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Running on a 2013 phone: the native low-end tech stack behind ProFocus","description":"ProFocus turns a spare phone into a desk clock, focus timer, and WiFi photo frame. Supporting that means running on Android 4.3 and iOS 12, with no Firebase and no Play Services. Here is how I built it.","datePublished":"2026-07-04T00:00:00.000Z","dateModified":"2026-07-04T00:00:00.000Z","inLanguage":"en","image":["https://fighttech.vn/assets/img/profocus-shot.webp"],"keywords":"Android, iOS, low-end devices, Java, Swift, native, GA4","articleSection":"ProFocus","wordCount":735,"author":{"@type":"Person","name":"Trần Trung Hiếu","url":"https://trunghieuvn.fighttech.vn/"},"publisher":{"@type":"Person","name":"Trần Trung Hiếu","url":"https://trunghieuvn.fighttech.vn/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://trunghieuvn.github.io/blog/native-low-end-devices/"}}</script> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://trunghieuvn.github.io/blog/"},{"@type":"ListItem","position":2,"name":"Running on a 2013 phone: the native low-end tech stack behind ProFocus","item":"https://trunghieuvn.github.io/blog/native-low-end-devices/"}]}</script>  </main> <footer class="footer"> <div class="container-wide footer-inner"> <span>© 2026 Trần Trung Hiếu. All rights reserved.</span> <span><a href="https://trunghieuvn.fighttech.vn/">trunghieuvn.fighttech.vn</a> · <a href="/blog/rss.xml">RSS</a></span> </div> </footer> <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.querySelector('.nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', function () {
+          var open = links.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+        links.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A') { links.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }
+        });
+      }
+    })();
+    (function () {
+      var btn = document.querySelector('.theme-toggle');
+      if (!btn) return;
+      var html = document.documentElement;
+      var MODES = ['system', 'light', 'dark'];
+      var GLYPH = { system: '◐', light: '☀︎', dark: '☾' };
+      function current() { var t = html.getAttribute('data-theme'); return (t === 'light' || t === 'dark') ? t : 'system'; }
+      function syncMeta() { var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = getComputedStyle(document.body).backgroundColor; }
+      function render(mode) { btn.textContent = GLYPH[mode]; btn.title = 'Theme: ' + mode; btn.setAttribute('aria-label', 'Theme: ' + mode); syncMeta(); }
+      btn.addEventListener('click', function () {
+        var next = MODES[(MODES.indexOf(current()) + 1) % MODES.length];
+        if (next === 'system') { html.removeAttribute('data-theme'); try { localStorage.removeItem('theme'); } catch (e) {} }
+        else { html.setAttribute('data-theme', next); try { localStorage.setItem('theme', next); } catch (e) {} }
+        render(next);
+      });
+      render(current());
+    })();
+  </script> </body> </html>

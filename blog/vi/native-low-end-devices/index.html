@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="vi"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chạy trên điện thoại đời 2013: techstack native low-end đằng sau ProFocus · Trần Trung Hiếu</title><meta name="description" content="ProFocus biến một chiếc điện thoại dư thành đồng hồ để bàn, đồng hồ tập trung và khung ảnh WiFi. Để làm được thế, nó phải chạy trên Android 4.3 và iOS 12, không Firebase và không Play Services. Đây là cách tôi làm."><link rel="icon" href="/blog/favicon.png" type="image/png"><meta name="theme-color" content="#0b0c0f"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"><meta name="author" content="Trần Trung Hiếu"><link rel="canonical" href="https://trunghieuvn.github.io/blog/vi/native-low-end-devices/"><link rel="alternate" hreflang="en" href="https://trunghieuvn.github.io/blog/native-low-end-devices/"><link rel="alternate" hreflang="vi" href="https://trunghieuvn.github.io/blog/vi/native-low-end-devices/"><link rel="alternate" hreflang="x-default" href="https://trunghieuvn.github.io/blog/native-low-end-devices/"><link rel="alternate" type="application/rss+xml" title="Trần Trung Hiếu — blog" href="/blog/vi/rss.xml"><meta property="og:site_name" content="Trần Trung Hiếu"><meta property="og:locale" content="vi_VN"><meta property="og:locale:alternate" content="en_US"><meta property="og:title" content="Chạy trên điện thoại đời 2013: techstack native low-end đằng sau ProFocus · Trần Trung Hiếu"><meta property="og:description" content="ProFocus biến một chiếc điện thoại dư thành đồng hồ để bàn, đồng hồ tập trung và khung ảnh WiFi. Để làm được thế, nó phải chạy trên Android 4.3 và iOS 12, không Firebase và không Play Services. Đây là cách tôi làm."><meta property="og:type" content="article"><meta property="og:url" content="https://trunghieuvn.github.io/blog/vi/native-low-end-devices/"><meta property="og:image" content="https://fighttech.vn/assets/img/profocus-shot.webp"><meta property="og:image:alt" content="Chạy trên điện thoại đời 2013: techstack native low-end đằng sau ProFocus · Trần Trung Hiếu"><meta property="article:published_time" content="2026-07-04T00:00:00.000Z"><meta property="article:modified_time" content="2026-07-04T00:00:00.000Z"><meta property="article:publisher" content="https://trunghieuvn.fighttech.vn/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Chạy trên điện thoại đời 2013: techstack native low-end đằng sau ProFocus · Trần Trung Hiếu"><meta name="twitter:description" content="ProFocus biến một chiếc điện thoại dư thành đồng hồ để bàn, đồng hồ tập trung và khung ảnh WiFi. Để làm được thế, nó phải chạy trên Android 4.3 và iOS 12, không Firebase và không Play Services. Đây là cách tôi làm."><meta name="twitter:image" content="https://fighttech.vn/assets/img/profocus-shot.webp"><script>
+    (function () {
+      try { var th = localStorage.getItem('theme'); if (th === 'light' || th === 'dark') document.documentElement.setAttribute('data-theme', th); } catch (e) {}
+    })();
+  </script><!-- Google Analytics (GA4) with Consent Mode; consent shared with the landing --><script async src="https://www.googletagmanager.com/gtag/js?id=G-9MBDSBG2P3"></script><script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    var _cc = 'denied';
+    try { if (localStorage.getItem('cookie-consent') === 'granted') _cc = 'granted'; } catch (e) {}
+    gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: _cc });
+    gtag('js', new Date());
+    gtag('config', 'G-9MBDSBG2P3');
+  </script><link rel="stylesheet" href="/blog/_astro/_slug_.CJPGv8a4.css"></head> <body> <header class="nav"> <div class="container-wide nav-inner"> <a class="brand" href="https://trunghieuvn.fighttech.vn/"> <span>Trần Trung Hiếu</span> </a> <nav aria-label="Chính"> <ul class="nav-links"> <li><a href="/blog/vi/" aria-current="page">Blog</a></li> <li><a href="https://trunghieuvn.fighttech.vn/#work">Sản phẩm</a></li> <li><a href="https://trunghieuvn.fighttech.vn/#reach">Liên hệ</a></li> </ul> </nav> <div class="nav-right"> <div class="lang" aria-label="Language"> <a href="/blog/native-low-end-devices/" lang="en">EN</a> <a href="/blog/vi/native-low-end-devices/" lang="vi" aria-current="true">VI</a> </div> <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">◐</button> <button class="nav-toggle" aria-expanded="false" aria-label="Mở menu">&#9776;</button> </div> </div> </header> <main>  <article> <div class="post-wrap"> <div class="post-grid"> <div class="post-main"> <div class="post-header"> <div class="meta"> <span class="chip"> <img src="https://fighttech.vn/assets/img/profocus-icon.webp" alt="" width="15" height="15"> ProFocus </span> <span>4/7/2026</span> <span>· 5 phút đọc</span> </div> <h1>Chạy trên điện thoại đời 2013: techstack native low-end đằng sau ProFocus</h1> <p class="desc">ProFocus biến một chiếc điện thoại dư thành đồng hồ để bàn, đồng hồ tập trung và khung ảnh WiFi. Để làm được thế, nó phải chạy trên Android 4.3 và iOS 12, không Firebase và không Play Services. Đây là cách tôi làm.</p> <div class="post-tags"><span class="chip">Android</span><span class="chip">iOS</span><span class="chip">máy cấu hình thấp</span><span class="chip">Java</span><span class="chip">Swift</span><span class="chip">native</span><span class="chip">GA4</span></div> </div> <div class="post-hero"> <img src="https://fighttech.vn/assets/img/profocus-shot.webp" alt="Ảnh chụp ProFocus"> </div> <div class="prose"><p>Hầu hết các app lặng lẽ bỏ hỗ trợ điện thoại cũ vì như thế dễ hơn. ProFocus, một trong những app tôi xây dựng và vận hành, làm ngược lại — hỗ trợ điện thoại cũ <strong>chính là sản phẩm</strong>. Nó lấy chiếc điện thoại nằm trong ngăn kéo của bạn, cái máy từ hai đời nâng cấp trước, và biến nó thành đồng hồ để bàn, đồng hồ tập trung, và khung ảnh WiFi. Điều đó chỉ chạy được nếu app thực sự cài và chạy trên phần cứng mà mọi người khác đã bỏ cuộc — chạy native, không dựa vào các SDK cross-platform nặng nề. Đây là techstack tôi dùng để giữ đúng lời hứa đó.</p>
+<h2 id="thấp-tới-đâu">Thấp tới đâu</h2>
+<ul>
+<li><strong>Android:</strong> <code>minSdk 18</code>, tức là <strong>Android 4.3 Jelly Bean, từ năm 2013</strong>. Tôi test trên một thiết bị 4.3 thật, không chỉ trên máy ảo.</li>
+<li><strong>iOS:</strong> deployment target <strong>12.2</strong>, nên một chiếc iPhone 6s đời 2015 vẫn được hỗ trợ đầy đủ.</li>
+<li><strong>TV:</strong> một bản Android TV và một bản tvOS 12, cùng một app đồng hành Wear OS.</li>
+</ul>
+<p>Chạm được những mức sàn đó không hề miễn phí. Nó định hình gần như mọi quyết định kỹ thuật bên dưới.</p>
+<h2 id="không-firebase-không-play-services-một-cách-có-chủ-đích">Không Firebase, không Play Services, một cách có chủ đích</h2>
+<p>Lựa chọn lớn nhất: ProFocus <strong>không kèm Firebase SDK và không phụ thuộc Google Play Services</strong>. Những thư viện đó nặng, không đảm bảo chạy trên máy đời cũ hoặc máy đã gỡ Google, và kéo theo rất nhiều bề mặt phức tạp cho một app chỉ cần hiển thị đồng hồ.</p>
+<p>Thay vào đó, dữ liệu phân tích đi ra dưới dạng lời gọi <strong>GA4 Measurement Protocol</strong> thuần tới máy chủ của chính tôi. Máy chủ đó, <code>tracking-server</code>, là một proxy <strong>Fastify (Node 20, TypeScript)</strong> không trạng thái và không có database: nó nhận một lô sự kiện, ánh xạ API key sang một project, và chuyển tiếp tới đúng luồng GA4. Chỉ một máy chủ nhỏ là thứ duy nhất từng nói chuyện với Google, nên app vẫn gọn và chạy được cả nơi không có Play Services.</p>
+<h2 id="đường-chướng-ngại-vật-của-ios-12">Đường chướng ngại vật của iOS 12</h2>
+<p>Swift native trên iOS 12 là một bãi mìn của những thứ biên dịch ngon lành rồi crash khi khởi động:</p>
+<ul>
+<li><strong>Swift Concurrency</strong> (<code>async</code>/<code>await</code>) crash trên iOS 12 vì runtime concurrency không tồn tại. Nên cả app viết theo API completion-handler; ngay cả lớp thanh toán RevenueCat cũng dùng API callback, không bao giờ <code>async</code>.</li>
+<li><strong>SwiftProtobuf</strong> cũng crash khi khởi động trên iOS 12. Tôi chia sẻ một schema <code>remote.proto</code> giữa các nền tảng, nhưng trên iOS không dùng các kiểu protobuf sinh ra chút nào. Thay vào đó có một struct <code>RemoteProtocol.swift</code> viết tay phản chiếu schema, và mọi thứ truyền đi dưới dạng JSON thuần trên đường truyền.</li>
+<li>Một lỗ hổng linker cho <code>___chkstk_darwin</code> trên thiết bị được xử lý bằng cách force-load <code>libclang_rt.ios.a</code>.</li>
+</ul>
+<p>Phía Android có phiên bản riêng của điệu nhảy này: những tính năng thực sự cần API mới hơn, như CameraX để quét QR hay Google Play Billing, được canh giữ sau <strong>kiểm tra API-level lúc chạy</strong>. App vẫn khai báo <code>minSdk 18</code>, và những tính năng đó chỉ sáng lên trên máy đủ mới để có chúng, còn một chiếc điện thoại 4.3 chạy mọi thứ còn lại một cách native — không polyfill, không lớp cầu nối.</p>
+<h2 id="một-sdk-dùng-chung-không-phải-keo-dán-riêng-từng-app">Một SDK dùng chung, không phải keo dán riêng từng app</h2>
+<p>Phần thanh toán và phân tích không được viết lại cho từng app. Chúng nằm trong một <strong>SDK dùng chung</strong> điều khiển bằng cấu hình, mà tôi tái sử dụng cho các sản phẩm khác của mình:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Module</th><th>Nền tảng</th><th>Nhiệm vụ</th></tr></thead><tbody><tr><td><code>fight-payment-*</code></td><td>iOS 12+, Android 18+</td><td>Mua trong app RevenueCat + paywall</td></tr><tr><td><code>fight-tracking-ga-*</code></td><td>iOS 12+, Android 18+</td><td>Client GA4 Measurement Protocol</td></tr><tr><td><code>proto</code></td><td>cả hai</td><td>Schema điều khiển từ xa dùng chung (JSON trên đường truyền)</td></tr></tbody></table>
+<p>Mọi thứ được tiêm vào lúc init: API key, id quyền lợi, theme, các hook phân tích. Không gì bị hardcode theo từng sản phẩm, và chỉ những SDK key công khai mới được commit vào repo. Nối một app mới vào thanh toán và phân tích là chuyện cấu hình, không phải code.</p>
+<h2 id="người-dùng-nhận-được-gì">Người dùng nhận được gì</h2>
+<p>Tất cả phần đường ống đó cộng lại thành một thứ đơn giản nhìn từ ngoài: một app không tài khoản và không theo dõi bên thứ ba, chia sẻ ảnh giữa các thiết bị qua WiFi nội bộ (điện thoại tự mở một máy chủ HTTP nhỏ trên cổng 8080), hiển thị đồng hồ kiểu Flip, Circle hay Analog, và chạy đồng hồ tập trung, trên một chiếc điện thoại mà các app hiện đại từ chối cài.</p>
+<p>Bài học kỹ thuật là “hỗ trợ máy cũ” không phải một ô tick bạn đánh dấu ở cuối. Nó là một ràng buộc bạn mang theo từ dòng đầu tiên: không async, không SDK nặng, kiểm tra lúc chạy ở khắp nơi, và máy chủ nhỏ của chính bạn đứng thay cho những dịch vụ nền tảng bạn đã chọn không mang theo.</p>
+<p>Bạn có thể thử nó từ <a href="https://apps.apple.com/app/id6785607785">App Store</a> — lý tưởng nhất là trên chính chiếc điện thoại đang nằm trong ngăn kéo.</p></div> <div class="post-links"> <a class="btn btn-primary" href="https://apps.apple.com/app/id6785607785" target="_blank" rel="noopener">App Store ↗</a> </div> <div class="post-foot"><a href="/blog/vi/">← Tất cả bài viết</a></div> </div> <aside class="toc" aria-label="Trong bài viết"><p class="toc-title">Trong bài viết</p><ul><li class><a href="#thấp-tới-đâu" data-toc="thấp-tới-đâu">Thấp tới đâu</a></li><li class><a href="#không-firebase-không-play-services-một-cách-có-chủ-đích" data-toc="không-firebase-không-play-services-một-cách-có-chủ-đích">Không Firebase, không Play Services, một cách có chủ đích</a></li><li class><a href="#đường-chướng-ngại-vật-của-ios-12" data-toc="đường-chướng-ngại-vật-của-ios-12">Đường chướng ngại vật của iOS 12</a></li><li class><a href="#một-sdk-dùng-chung-không-phải-keo-dán-riêng-từng-app" data-toc="một-sdk-dùng-chung-không-phải-keo-dán-riêng-từng-app">Một SDK dùng chung, không phải keo dán riêng từng app</a></li><li class><a href="#người-dùng-nhận-được-gì" data-toc="người-dùng-nhận-được-gì">Người dùng nhận được gì</a></li></ul></aside><script>
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[data-toc]'));
+    if (!links.length) return;
+    var map = {};
+    var heads = [];
+    links.forEach(function (a) {
+      var id = a.getAttribute('data-toc');
+      map[id] = a;
+      var el = document.getElementById(id);
+      if (el) heads.push(el);
+    });
+    var setActive = function (id) {
+      links.forEach(function (a) { a.classList.remove('active'); });
+      if (map[id]) map[id].classList.add('active');
+    };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+      heads.forEach(function (h) { io.observe(h); });
+    }
+    // Smooth-scroll and immediate highlight on click
+    links.forEach(function (a) {
+      a.addEventListener('click', function () { setActive(a.getAttribute('data-toc')); });
+    });
+  })();
+</script> </div> </div> </article> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Chạy trên điện thoại đời 2013: techstack native low-end đằng sau ProFocus","description":"ProFocus biến một chiếc điện thoại dư thành đồng hồ để bàn, đồng hồ tập trung và khung ảnh WiFi. Để làm được thế, nó phải chạy trên Android 4.3 và iOS 12, không Firebase và không Play Services. Đây là cách tôi làm.","datePublished":"2026-07-04T00:00:00.000Z","dateModified":"2026-07-04T00:00:00.000Z","inLanguage":"vi","image":["https://fighttech.vn/assets/img/profocus-shot.webp"],"keywords":"Android, iOS, máy cấu hình thấp, Java, Swift, native, GA4","articleSection":"ProFocus","wordCount":906,"author":{"@type":"Person","name":"Trần Trung Hiếu","url":"https://trunghieuvn.fighttech.vn/"},"publisher":{"@type":"Person","name":"Trần Trung Hiếu","url":"https://trunghieuvn.fighttech.vn/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://trunghieuvn.github.io/blog/vi/native-low-end-devices/"}}</script> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blog","item":"https://trunghieuvn.github.io/blog/vi/"},{"@type":"ListItem","position":2,"name":"Chạy trên điện thoại đời 2013: techstack native low-end đằng sau ProFocus","item":"https://trunghieuvn.github.io/blog/vi/native-low-end-devices/"}]}</script>  </main> <footer class="footer"> <div class="container-wide footer-inner"> <span>© 2026 Trần Trung Hiếu. Bảo lưu mọi quyền.</span> <span><a href="https://trunghieuvn.fighttech.vn/">trunghieuvn.fighttech.vn</a> · <a href="/blog/vi/rss.xml">RSS</a></span> </div> </footer> <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.querySelector('.nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', function () {
+          var open = links.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+        links.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A') { links.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }
+        });
+      }
+    })();
+    (function () {
+      var btn = document.querySelector('.theme-toggle');
+      if (!btn) return;
+      var html = document.documentElement;
+      var MODES = ['system', 'light', 'dark'];
+      var GLYPH = { system: '◐', light: '☀︎', dark: '☾' };
+      function current() { var t = html.getAttribute('data-theme'); return (t === 'light' || t === 'dark') ? t : 'system'; }
+      function syncMeta() { var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = getComputedStyle(document.body).backgroundColor; }
+      function render(mode) { btn.textContent = GLYPH[mode]; btn.title = 'Theme: ' + mode; btn.setAttribute('aria-label', 'Theme: ' + mode); syncMeta(); }
+      btn.addEventListener('click', function () {
+        var next = MODES[(MODES.indexOf(current()) + 1) % MODES.length];
+        if (next === 'system') { html.removeAttribute('data-theme'); try { localStorage.removeItem('theme'); } catch (e) {} }
+        else { html.setAttribute('data-theme', next); try { localStorage.setItem('theme', next); } catch (e) {} }
+        render(next);
+      });
+      render(current());
+    })();
+  </script> </body> </html>

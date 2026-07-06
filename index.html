@@ -1,84 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Device Fingerprint Info</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 20px;
-    }
-
-    pre {
-      background: #f4f4f4;
-      padding: 10px;
-      border-radius: 8px;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-
-    .section {
-      margin-bottom: 20px;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google Analytics (GA4), Firebase project fightechvn -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MBDSBG2P3"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}var _cc='denied';try{if(localStorage.getItem('cookie-consent')==='granted')_cc='granted';}catch(e){}gtag('consent','default',{ad_storage:'denied',analytics_storage:_cc});gtag('js',new Date());gtag('config','G-9MBDSBG2P3');</script>
+  <title>Trần Trung Hiếu — Software Engineer</title>
+  <meta name="description" content="Trần Trung Hiếu — software engineer building mobile and full-stack products. Flutter, Swift, TypeScript, Node. Founder-engineer at FightTech." />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+  <meta name="theme-color" content="#fbfaf8" />
+  <link rel="canonical" href="https://trunghieuvn.github.io/" />
+  <link rel="stylesheet" href="assets/css/style.css?v=1" />
+  <script>(function(){var d=document.documentElement;try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <meta property="og:title" content="Trần Trung Hiếu — Software Engineer" />
+  <meta property="og:description" content="Mobile & full-stack engineer. Flutter, Swift, TypeScript, Node." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://trunghieuvn.github.io/" />
 </head>
-
 <body>
-  <div class="section">
-    <h1>📋 Device Fingerprint Information</h1>
-    <pre id="info">Loading...</pre>
-  </div>
+<div class="wrap">
 
-  <script>
-    async function sha256(str) {
-      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-    }
+  <header class="head">
+    <p class="head-eyebrow">Software engineer · Ho Chi Minh City</p>
+    <h1>Trần Trung Hiếu</h1>
+    <p class="head-sub">Mobile &amp; full-stack<span class="dot">·</span>Ho Chi Minh City, GMT+7<span class="dot">·</span>set in Space Grotesk</p>
+    <nav class="toc" aria-label="Sections">
+      <ul>
+        <li><a href="#index">00 · Index</a></li>
+        <li><a href="#now">01 · Now</a></li>
+        <li><a href="#work">02 · Work</a></li>
+        <li><a href="#stack">03 · Stack</a></li>
+        <li><a href="#reach">04 · Reach</a></li>
+        <li><a href="#blog">05 · Blog</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    async function getGPUInfo() {
-      const canvas = document.createElement('canvas');
-      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-      if (!gl) return { vendor: null, renderer: null };
-      const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-      return {
-        vendor: debugInfo ? gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL) : null,
-        renderer: debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : null
-      };
-    }
+  <section class="s" id="index">
+    <p class="s-label">00 · Index</p>
+    <p>I build mobile apps and the backends behind them, end to end. Native iOS in Swift/SwiftUI, cross-platform in Flutter, and web services in TypeScript and Node when the product needs a server. I ship rather than mock up: everything below is live in the App Store, Google Play, or on the web.</p>
+    <p>Founder-engineer at <a href="https://fighttech.vn" target="_blank" rel="noopener">FightTech</a>, a small product studio in Vietnam — five apps shipped and maintained by a lean team, plus contract work for outside clients who need the same thing done for them.</p>
+  </section>
 
+  <section class="s" id="now">
+    <p class="s-label">01 · Now</p>
+    <p>Splitting time between FightTech's own app portfolio — GoBrain, ProFocus, Hack Não English, Manifest, Capy Run — and short full-stack and mobile engagements for outside teams: MVP builds, App Store/Play launches, and migrating prototypes into something maintainable.</p>
+    <p class="muted">Open to freelance and contract work. See <a href="#reach">04 · Reach</a> to get in touch, or read the <a href="/blog/">blog</a> for engineering write-ups.</p>
+  </section>
 
-    async function collectInfo() {
-      const ua = navigator.userAgent;
-      const platform = navigator.platform;
-      const language = navigator.language;
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      const screenInfo = {
-        width: window.screen.width,
-        height: window.screen.height,
-        pixelRatio: window.devicePixelRatio
-      };
+  <section class="s" id="work">
+    <p class="s-label">02 · Work</p>
 
-      const data = {
-        ua,
-        platform,
-        language,
-        timezone,
-        screen: screenInfo
-      };
-      data.fingerprint = await sha256(JSON.stringify(data));
-      return data;
-    }
+    <div class="work">
+      <div class="work-row">
+        <h3>GoBrain</h3>
+        <span class="platforms">iOS · Android · Web</span>
+      </div>
+      <p>Brain puzzles: a fast 2048 plus daily logic mini games, built on an H5 game engine and packaged as native apps with over-the-air updates.</p>
+      <div class="tags"><span>PixiJS</span><span>TypeScript</span><span>Capacitor</span><span>Firebase</span></div>
+      <a class="link" href="https://fighttechvn.github.io/play2048/play/" target="_blank" rel="noopener">Play in browser →</a>
+    </div>
 
-    collectInfo().then(data => {
-      document.getElementById('info').textContent = JSON.stringify(data, null, 2);
-    });
-  </script>
+    <div class="work">
+      <div class="work-row">
+        <h3>ProFocus: Frame &amp; Timer</h3>
+        <span class="platforms">iOS · Android · tvOS</span>
+      </div>
+      <p>Turns a spare phone or tablet into a desk clock, focus timer, and WiFi photo frame. No ads, no account, no tracking.</p>
+      <div class="tags"><span>Swift / UIKit</span><span>Java Android</span><span>Fastify</span><span>Socket.IO</span></div>
+      <a class="link" href="https://apps.apple.com/app/id6785607785" target="_blank" rel="noopener">App Store →</a>
+    </div>
+
+    <div class="work">
+      <div class="work-row">
+        <h3>Hack Não 1500 English</h3>
+        <span class="platforms">iOS · Android · Web</span>
+      </div>
+      <p>Offline English vocabulary with an AI pronunciation and grammar coach that runs entirely on-device. No server, no connection needed.</p>
+      <div class="tags"><span>Flutter</span><span>llama.cpp / GGUF</span><span>BLoC</span></div>
+      <a class="link" href="https://hacknaoenglish.web.app/" target="_blank" rel="noopener">Web app →</a>
+    </div>
+
+    <div class="work">
+      <div class="work-row">
+        <h3>Manifest</h3>
+        <span class="platforms">iOS · home-screen widgets</span>
+      </div>
+      <p>A Vietnamese lunar calendar for iOS: cultural reminders, holiday explorer, widgets, Live Activities, and Dynamic Island support.</p>
+      <div class="tags"><span>SwiftUI</span><span>Swift 6</span><span>WidgetKit</span><span>Live Activities</span></div>
+      <a class="link" href="https://apps.apple.com/app/id6773827653" target="_blank" rel="noopener">App Store →</a>
+    </div>
+
+    <div class="work">
+      <div class="work-row">
+        <h3>App Preview</h3>
+        <span class="platforms">Open source · macOS · Windows · Web</span>
+      </div>
+      <p>A local tool to assemble, preview, and QA an App Store / Google Play listing before shipping — sync screenshots and metadata, diff New vs. Current, run a store SEO audit.</p>
+      <div class="tags"><span>Python</span><span>Tauri</span></div>
+      <a class="link" href="https://github.com/fighttechvn/app_marketing" target="_blank" rel="noopener">GitHub →</a>
+    </div>
+
+    <div class="work">
+      <div class="work-row">
+        <h3>Capy Run: Capybara Runner 3D</h3>
+        <span class="platforms">Android</span>
+      </div>
+      <p>Endless 3D runner: dash, dodge trains, and escape through a vibrant city as a cute capybara. Pick a character, beat your best run.</p>
+      <div class="tags"><span>3D runner</span><span>In-app purchases</span></div>
+      <a class="link" href="https://play.google.com/store/apps/details?id=vn.fighttech.capyrun" target="_blank" rel="noopener">Google Play →</a>
+    </div>
+  </section>
+
+  <section class="s" id="stack">
+    <p class="s-label">03 · Stack</p>
+    <div class="stack-grid">
+      <div>
+        <h4>Mobile</h4>
+        <ul>
+          <li>Swift / SwiftUI / UIKit</li>
+          <li>Flutter / BLoC</li>
+          <li>Capacitor</li>
+          <li>WidgetKit, Live Activities</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Backend &amp; web</h4>
+        <ul>
+          <li>TypeScript / Node</li>
+          <li>Fastify, Socket.IO</li>
+          <li>Firebase</li>
+          <li>Python</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Tools &amp; other</h4>
+        <ul>
+          <li>PixiJS, Protobuf</li>
+          <li>llama.cpp / GGUF (on-device AI)</li>
+          <li>Tauri</li>
+          <li>Git, CI/CD, App Store Connect</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="reach">
+    <p class="s-label">04 · Reach</p>
+    <ul class="reach">
+      <li><span class="k">Email</span><a href="mailto:hieu.trantrung1204@gmail.com">hieu.trantrung1204@gmail.com</a></li>
+      <li><span class="k">GitHub</span><a href="https://github.com/trunghieuvn" target="_blank" rel="noopener">github.com/trunghieuvn</a></li>
+      <li><span class="k">X</span><a href="https://x.com/trunghieuvn93" target="_blank" rel="noopener">x.com/trunghieuvn93</a></li>
+      <li><span class="k">Studio</span><a href="https://fighttech.vn" target="_blank" rel="noopener">fighttech.vn</a></li>
+    </ul>
+  </section>
+
+  <section class="s" id="blog">
+    <p class="s-label">05 · Blog</p>
+    <div class="work">
+      <div class="work-row">
+        <h3>Running on a 2013 phone: the native low-end tech stack behind ProFocus</h3>
+        <span class="platforms">Jul 4, 2026 · ProFocus</span>
+      </div>
+      <p>ProFocus turns a spare phone into a desk clock, focus timer, and WiFi photo frame. Supporting that means running on Android 4.3 and iOS 12, with no Firebase and no Play Services. Here is how I built it.</p>
+      <div class="tags"><span>Android</span><span>iOS</span><span>low-end devices</span></div>
+      <a class="link" href="/blog/native-low-end-devices/">Read the write-up →</a>
+    </div>
+    <p class="muted"><a href="/blog/">All posts →</a></p>
+  </section>
+
+  <footer class="foot">
+    <span>© 2026 Trần Trung Hiếu</span>
+    <span>trunghieuvn.fighttech.vn</span>
+  </footer>
+
+</div>
 </body>
-
 </html>
